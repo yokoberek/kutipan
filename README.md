@@ -6,3 +6,6 @@ Pengguna dapat melihat kutipan secara otomatis yang akan diganti setiap 24 jam a
 ## Screenshot:
 
 ![Screenshot Aplikasi Daily Quotes](./screenshot.png)
+
+
+> Dataset: https://kk.org/thetechnium/101-additional-advices/
