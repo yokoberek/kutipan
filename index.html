@@ -35,28 +35,27 @@
                         currentIndex = index;
                     }
 
-                    // Fungsi untuk menampilkan kutipan secara acak
-                    function randomQuote() {
+                    // Fungsi untuk menampilkan kutipan berikutnya secara acak
+                    function nextQuote() {
                         let randomIndex = Math.floor(Math.random() * quotes.length);
                         displayQuote(randomIndex);
                     }
 
-                    // Fungsi untuk menampilkan kutipan berikutnya secara acak
-                    function nextQuote() {
-                        randomQuote();
-                    }
-
                     // Fungsi untuk menampilkan kutipan sebelumnya tanpa random
                     function prevQuote() {
-                        displayQuote(currentIndex - 1);
+                        let prevIndex = currentIndex - 1;
+                        if (prevIndex < 0) {
+                            prevIndex = quotes.length - 1;
+                        }
+                        displayQuote(prevIndex);
                     }
 
                     // Menampilkan kutipan pertama saat halaman dimuat
-                    randomQuote();
+                    displayQuote(currentIndex);
 
                     // Menambahkan event listener untuk tombol "Next" dan "Previous"
                     document.getElementById("nextButton").addEventListener("click", nextQuote);
-                    document.getElementById("prevButton").addEventListener("click", prevQuote);
+                    document.getElementById("prevButton").addEventListener("click", prevQuote);                
                 })
                 .catch(error => console.error('Error fetching quotes:', error));
         }
