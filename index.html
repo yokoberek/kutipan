@@ -20,9 +20,9 @@
             fetch('https://raw.githubusercontent.com/yokoberek/kutipan/main/quotes.json')
                 .then(response => response.json())
                 .then(data => {
-                    var quotes = data;
-                    var quoteText = document.getElementById("quoteText");
-                    var currentIndex = 0;
+                    let quotes = data;
+                    let quoteText = document.getElementById("quoteText");
+                    let currentIndex = 0;
 
                     // Fungsi untuk menampilkan kutipan berdasarkan indeks
                     function displayQuote(index) {
@@ -35,23 +35,24 @@
                         currentIndex = index;
                     }
 
-                    // Fungsi untuk menampilkan kutipan berikutnya
-                    function nextQuote() {
-                        displayQuote(currentIndex + 1);
+                    // Fungsi untuk menampilkan kutipan secara acak
+                    function randomQuote() {
+                        let randomIndex = Math.floor(Math.random() * quotes.length);
+                        displayQuote(randomIndex);
                     }
 
-                    // Fungsi untuk menampilkan kutipan sebelumnya
+                    // Fungsi untuk menampilkan kutipan berikutnya secara acak
+                    function nextQuote() {
+                        randomQuote();
+                    }
+
+                    // Fungsi untuk menampilkan kutipan sebelumnya tanpa random
                     function prevQuote() {
                         displayQuote(currentIndex - 1);
                     }
 
                     // Menampilkan kutipan pertama saat halaman dimuat
-                    displayQuote(currentIndex);
-
-                    // Menampilkan kutipan baru setiap 24 jam
-                    setInterval(function() {
-                        nextQuote();
-                    }, 24 * 60 * 60 * 1000); // 24 jam dalam milidetik
+                    randomQuote();
 
                     // Menambahkan event listener untuk tombol "Next" dan "Previous"
                     document.getElementById("nextButton").addEventListener("click", nextQuote);
